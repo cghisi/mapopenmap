@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>CT Finder - OpenStreetMap</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+    <script src="maps.js"></script>
+    <style>
+        body {
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body onload="getGeolocation(); ">
+    <div>
+        <h2>Canadian Tire Store Locator</h2>
+        <p>Technology used :</p>
+        <ul>
+            <li><b>OpenStreetMap</b>: Collaborative Map of the World. </li>
+            <li><b>LeafletMap</b> : javascript library to add markers, calculate distance ...</li>
+            <li><b>HTML5 Geolocation</b> : Browser Geolocation API is used to locate a user's position.</li>
+            <li><b>IP Geolocation (extreme-ip-lookup.com)</b> : Free IP Lookup Geolocation API. (limitation : 20 request/min - 50,000 requests per month)</li>
+        </ul>
+    </div>
+    <div id="result"></div>
+    <br>
+    <div id="map" style="width: 800px; height: 800px;"></div>
+    <script type="application/javascript" src="//unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="leaflet.geometryutil.js"></script>
+</body>
+
+</html>
