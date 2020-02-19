@@ -2,7 +2,9 @@ var map;
 var mapDefaultZoom = 10;
 var fileName = "ctstore.json";
 
-
+/**
+ * Init HTML5 geolocation or IP location
+ */
 function getGeolocation() {
     navigator.geolocation.watchPosition(function (position) {
             navigator.geolocation.getCurrentPosition(drawMap);
@@ -39,10 +41,13 @@ function getIP(callback) {
  * @param {*} geoPos 
  */
 function drawMap(geoPos) {
+
+    var provider = "HTML";
     if (geoPos.coords) {
         mapLat = geoPos.coords.latitude;
         mapLng = geoPos.coords.longitude;
     } else {
+        provider = "IP";
         mapLat = geoPos.lat;
         mapLng = geoPos.lon;
     }
@@ -62,7 +67,7 @@ function drawMap(geoPos) {
     map.setView(latlng, 12);
 
     var marker = L.marker([mapLat, mapLng]).addTo(map);
-    marker.bindPopup('<b>Lat: ' + mapLat + '<br />Lon:' + mapLng + '</b><br /><br />This is your position using HTML Location.');
+    marker.bindPopup('<b>Lat: ' + mapLat + '<br />Lon:' + mapLng + '</b><br /><br />This is your position using the ' + provider + ' Location.');
 
     var myIcon = L.icon({
         iconUrl: 'img/icon.png',
