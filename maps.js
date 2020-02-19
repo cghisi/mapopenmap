@@ -13,7 +13,6 @@ function getGeolocation() {
                     "Geolocation is not enabled.";
 
                 getIP(function (data) {
-                    console.log(data);
                     drawMap(data);
                 });
             }
@@ -48,13 +47,16 @@ function drawMap(geoPos) {
         mapLng = geoPos.lon;
     }
 
-    map = new L.Map('map', {
-        layers: [
-            new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-            })
-        ]
-    });
+    if (!map) {
+        map = new L.Map('map', {
+            layers: [
+                new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    'attribution': 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+                })
+            ]
+        });
+    }
+
 
     var latlng = new L.latLng(mapLat, mapLng);
     map.setView(latlng, 12);
